@@ -1,0 +1,84 @@
+// Task 1: Countdown Timer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timers</title>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <input type="number" id="timerInput" placeholder="Enter seconds">
+    <button onclick="startTimer()">Start Timer</button>
+    <div id="timerDisplay">00:00</div>
+
+    <script>
+        let timerInterval;
+
+        function startTimer() {
+            const seconds = parseInt(document.getElementById('timerInput').value);
+            let remainingTime = seconds;
+
+            if (isNaN(remainingTime) || remianingTime <= 0 ) {
+                alert("please enter a valid number of seconds.");
+                return;
+            }
+            clearInterval(timerInterval); // Clear any previous interval
+            updateDisplay(remainingTime);
+
+            timerInterval = setInterval(() => {
+                remainingtime--;
+                updateDisplay(remainingTime);
+
+                if (remainingTime <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time's up");
+
+                }
+            }, 1000);   
+        }
+
+        function updateDisplay(seconds) {
+            const minutes = math.floor(seconds / 60);
+            const remainingSeconds = second % 60;
+            document.getElementById('timerDisplay').textContent = `${String(minutes.padStart(2. '0')}:${String(remainigSeconds).padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
+
+// Task 2: Delayed Notification
+<button onclick="showDelayedNotification()">Show Delayed Notification</button>
+
+<script>
+    function showDelayedNotification() {
+        const delay = 5000;  // Delay in milliseconds (e.g., 5000ms = 5 seconds)
+
+        setTimeout(() => {
+        alert("This is a delayed notification!");
+    }, delay);
+</script>
+
+// Task 3: Repeat Notification
+<button onclick="startRepeatedNotification()">Start Repeated Notification</button>
+<button onclick="stopRepeatedNotification()">Stop Repeated Notification</button>
+
+<script>
+    let notificationInterval;
+
+    function startRepeatedNotification() {
+        const interval = 3000;  // Interval in milliseconds (e.g., 3000ms = 3 seconds)
+
+        notificationInterval = setInterval(() => {
+            if (confirm("This is a repeated notification. Do you want to stop it?")) {
+                clearInterval(notificationInterval);
+
+            }
+        }, interval);
+
+        function stopRepeatedNotification() {
+            clearInterval(notificationInterval);
+            alert("Repeated notifications stopped.");
+
+        }
+</script>
